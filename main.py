@@ -5,14 +5,14 @@ from os import path
 FLAGS = flags.FLAGS
 
 flags.DEFINE_bool('r', True, 'Read a job')
-flags.DEFINE_string('w', 'Name, Job Number, Notes', 'Add a new entry')
+flags.DEFINE_bool('w', False, 'Add a new entry')
 flags.DEFINE_string('name', None, 'Job Name')
 flags.DEFINE_integer('number', None, 'Job Number')
 
 
 def main(argv):
     if path.isfile('theLibrary.txt') != True:
-        open('theLibrary.txt')
+        file = open('theLibrary.txt', 'x')
         
     if FLAGS.r == True:
         with open('theLibrary.txt', 'r') as file:
@@ -25,12 +25,16 @@ def main(argv):
                 for line in file:
                     if FLAGS.number in line:
                         print(line)
+            file.close()
                         
-    if FLAGS.w == True:
-        with open('theLibrary.txt', 'w') as file:
-            for line in file:
-                if line.isspace():
-                    file.write(FLAGS.w)
+    if FLAGS.w:
+        with open('theLibrary.txt', 'a') as file:
+            name = input("Job Name: ")
+            number = input("Job Number: ")
+            notes = input("Job Info: ")
+            job = str([name, number, notes])
+            file.write(job)
+            file.close()
                         
                     
 
