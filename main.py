@@ -27,13 +27,14 @@ def main(argv):
                         print(line)
             file.close()
                         
+
     if FLAGS.w:
         with open('theLibrary.txt', 'a') as file:
             name = input("Job Name: ")
             number = input("Job Number: ")
             notes = input("Job Info: ")
             job = str([name, number, notes])
-            file.write(job)
+            file.write("\n{}".format(job))
             file.close()
                         
                     

@@ -1,2 +1,1 @@
-John Smith Street Appartment
-Jane Doe Beach House
+['joe shmo', '32', 'building47 second and eigth street yada yada']
